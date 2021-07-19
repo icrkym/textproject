@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+$main:black;
+$sub: black;
+$bg: black;
+
+$pc: 1350px; // PC
+$md: 1349px; // md
+$sp: 900px; // SP
+
+@mixin pc {
+    @media (min-width: ($pc)) {
+        @content;
+    }
+}
+@mixin md {
+    @media (max-width: ($md)) {
+        @content;
+    }
+}
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.4rem;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.container {
+    margin: 0 auto;
+    width: 98%;
+}
+
+h1 {
+}
+h2 {
+}
+h3 {
+}
+h4 {
+}
+p {
+}
+
+a {
+    cursor: pointer;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+// SPボタン
+.sp_btn {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    @include pc {
+        display: none;
+    }
+
+    @include md {
+        display: none;
+    }
+
+    @include sp {
+        display: flex;
+    }
+
+    span,
+    span:before,
+    span:after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 30px;
+        border-radius: 3px;
+        background-color: black;
+        position: absolute;
+    }
+    span:before {
+        bottom: 8px;
+    }
+    span:after {
+        top: 8px;
+    }
+}
